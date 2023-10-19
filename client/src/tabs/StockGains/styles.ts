@@ -1,4 +1,4 @@
-import { styled } from '@material-ui/core';
+import { styled } from '@material-ui/system';
 
 export const Form = styled('form')(({ theme }) => ({
   padding: theme.spacing(2),

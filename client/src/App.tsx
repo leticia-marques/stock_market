@@ -1,6 +1,6 @@
 import { AppBar, Typography } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
-import{ Box} from '@material-ui/core';
+import { Box } from '@material-ui/system';
 import { BoxCentered } from 'components/MaterialUIExtended';
 import React, { useRef, useState } from 'react';
 import { SearchBox, SearchIconBox, SearchInput, Tabs, Tab, Toolbar } from 'styles';

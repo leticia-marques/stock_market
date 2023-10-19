@@ -1,5 +1,5 @@
 import { CircularProgress, TextField, Typography } from '@material-ui/core';
-import {Box} from '@material-ui/core';
+import { Box } from '@material-ui/system';
 import StockNotFoundMessage from 'components/StockNotFoundMessage';
 import { isValid } from 'date-fns';
 import React, { useMemo, useState } from 'react';
