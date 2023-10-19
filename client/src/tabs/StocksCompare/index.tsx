@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
-import { Box } from '@material-ui/system';
+import{ Box} from '@material-ui/core';
 import StockNotFoundMessage from 'components/StockNotFoundMessage';
 import React, { useRef, useState } from 'react';
 import { useQuery } from 'react-query';

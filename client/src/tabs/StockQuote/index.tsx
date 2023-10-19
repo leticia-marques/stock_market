@@ -1,6 +1,6 @@
 import React from 'react';
 import { CircularProgress, Typography } from '@material-ui/core';
-import { Box } from '@material-ui/system';
+import {Box} from '@material-ui/core';
 import { useQuery } from 'react-query';
 import { StockingAPI, StockNotFoundError } from 'services/StockingAPI';
 import { Formatter } from 'utils/formatter';

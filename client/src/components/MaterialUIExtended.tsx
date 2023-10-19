@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/system';
+import {Box} from '@material-ui/core';
 import { ReactNode } from 'react';
 
 type Props = {
