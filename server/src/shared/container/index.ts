@@ -1,5 +1,4 @@
 import { container, inject } from "tsyringe";
-import { IApiClient } from "../api/IApiClient";
 import { AlphaApiClient } from "../api/apiClient";
 import { IDateProvider } from "../providers/dateProvider/IDateProvider";
 import { DateProvider } from "../providers/dateProvider/DateProvider";

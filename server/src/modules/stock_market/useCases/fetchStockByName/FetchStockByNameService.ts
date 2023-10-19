@@ -1,8 +1,7 @@
 import { container, inject, injectable } from "tsyringe";
-import { IApiClient } from "../../../../shared/api/IApiClient";
+import { IApiClient } from "@shared/api/IApiClient";
 import { Quote } from "../../models/Quote";
-import { AppError } from "../../../../shared/errors/AppError";
-import { AlphaApiClient } from "../../../../shared/api/apiClient";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 export class FetchStockByNameService {

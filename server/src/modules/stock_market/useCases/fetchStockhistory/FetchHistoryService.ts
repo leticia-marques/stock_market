@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
-import { IApiClient } from "../../../../shared/api/IApiClient";
-import { IDateProvider } from "../../../../shared/providers/dateProvider/IDateProvider";
-import { AppError } from "../../../../shared/errors/AppError";
+import { IApiClient } from "@shared/api/IApiClient";
+import { IDateProvider } from "@shared/providers/dateProvider/IDateProvider";
+import { AppError } from "@shared/errors/AppError";
 import { HistoryEntry, History } from "../../models/History";
 
 interface IRequest {

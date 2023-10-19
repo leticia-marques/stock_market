@@ -1,5 +1,5 @@
-import { IFetchHistoryDto } from "../../modules/stock_market/dtos/IFetchHistoryDto";
-import { Quote } from "../../modules/stock_market/models/Quote";
+import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
+import { Quote } from "@modules/stock_market/models/Quote";
 import { timeSeriesDailyType } from "./apiClient";
 
 export interface IApiClient {

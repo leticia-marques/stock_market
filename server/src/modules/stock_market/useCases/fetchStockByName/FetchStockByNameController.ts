@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { FetchStockByNameService} from "./FetchStockByNameService";
-import { AppError } from "../../../../shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 export class FetchStockByNameController {
     async handle(req: Request, res: Response): Promise<Response> {

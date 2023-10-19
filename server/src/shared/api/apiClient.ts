@@ -1,8 +1,8 @@
 import { axios } from "./axiosConfig";
 import { IApiClient } from "./IApiClient";
-import { Quote } from "../../modules/stock_market/models/Quote";
+import { Quote } from "@modules/stock_market/models/Quote";
 import { AppError } from "../errors/AppError";
-import { IFetchHistoryDto } from "../../modules/stock_market/dtos/IFetchHistoryDto";
+import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
 import { inject, injectable } from "tsyringe";
 import { IDateProvider } from "../providers/dateProvider/IDateProvider";
 
