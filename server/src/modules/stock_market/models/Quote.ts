@@ -1,13 +1,13 @@
 interface ICreateQuote {
     name: string;
     lastPrice: number;
-    pricedAt: Date;
+    pricedAt: string;
 }
 
 export class Quote {
   private readonly name: string;
   private readonly lastPrice: number;
-  private readonly pricedAt: Date;
+  private readonly pricedAt: string;
 
   constructor(quote: ICreateQuote) {
     this.name = quote.name;

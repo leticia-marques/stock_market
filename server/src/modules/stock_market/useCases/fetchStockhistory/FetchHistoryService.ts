@@ -2,13 +2,15 @@ import { inject, injectable } from "tsyringe";
 import { IApiClient } from "@shared/api/IApiClient";
 import { IDateProvider } from "@shared/providers/dateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
-import { HistoryEntry, History } from "../../models/History";
+import { History } from "../../models/History";
+import { HistoryEntry, historyDataStructure } from "@modules/stock_market/types/types";
 
 interface IRequest {
     stockName: string;
     from: string;
     to: string;
 }
+
 @injectable()
 export class FetchHistoryService {
     constructor(@inject("ClientApi") private clientApi: IApiClient, @inject("DateProvider") private dateProvider: IDateProvider) {}
@@ -18,7 +20,10 @@ export class FetchHistoryService {
        if (compareInDays < 1) {
             throw new AppError("The final date needs to be greater than initial date", 400);
        }
-       const stockHistoryByDate = await this.clientApi.fetchStockHistory(fetchHistory);
+       const stockHistoryByDate: historyDataStructure = await this.clientApi.fetchStockHistory(fetchHistory);
+       if (!stockHistoryByDate) {
+          throw new AppError("Stock not found", 404);
+       }
         const historyEntries: HistoryEntry[] = Object.entries(stockHistoryByDate).map(([date, data]) => {
         const { '1. open': opening, '3. low': low, '2. high': high, '4. close': closing, '5. volume': volume } = data;
         return {
@@ -31,6 +36,6 @@ export class FetchHistoryService {
         };
       });
       
-       return new History({name: fetchHistory.stockName, prices: historyEntries});
+       return {name: fetchHistory.stockName, prices: historyEntries};
     }
 }

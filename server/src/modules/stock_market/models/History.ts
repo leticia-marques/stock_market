@@ -1,11 +1,4 @@
-export type HistoryEntry  = {
-    opening: number;
-    low: number;
-    high: number;
-    closing: number;
-    pricedAt: string;
-    volume: number;
-}
+import { HistoryEntry } from "../types/types";
 
 interface ICreateHistory {
     name: string;
