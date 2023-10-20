@@ -3,15 +3,12 @@ import { IApiClient } from "./IApiClient";
 import { Quote } from "@modules/stock_market/models/Quote";
 import { AppError } from "../errors/AppError";
 import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
-import { inject, injectable } from "tsyringe";
-import { IDateProvider } from "../providers/dateProvider/IDateProvider";
-import { historyDataStructure, stockDataStructure} from "@modules/stock_market/types/types";
+import { historyDataStructure} from "@modules/stock_market/types/types";
 import { getEntriesByDate } from "@modules/stock_market/utils/helperFunctions";
 
-@injectable()
 export class AlphaApiClient implements IApiClient {
 
-    constructor(private readonly apiKey: string, @inject("DateProvider") private dateProvider: IDateProvider) {
+    constructor(private readonly apiKey: string) {
         if (!this.apiKey) {
             throw new AppError("Alphavantage api key is missing. Make sure API_KEY var in set on you .env file", 404)
         }
