@@ -44,7 +44,6 @@ export class GainsProjectionService {
       Number(data.purchasedAmount) * Number(stockOnPurchasedDate["4. close"]);
     const currentTotalValue =
       Number(data.purchasedAmount) * Number(latestStockData["4. close"]);
-      console.log(stockOnPurchasedDate);
     const gains = currentTotalValue - totalPaid;
 
     return {

@@ -5,7 +5,7 @@ import { AppError } from "../errors/AppError";
 import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
 import { inject, injectable } from "tsyringe";
 import { IDateProvider } from "../providers/dateProvider/IDateProvider";
-import { historyDataStructure} from "@modules/stock_market/types/types";
+import { historyDataStructure, stockDataStructure} from "@modules/stock_market/types/types";
 import { getEntriesByDate } from "@modules/stock_market/utils/helperFunctions";
 
 @injectable()

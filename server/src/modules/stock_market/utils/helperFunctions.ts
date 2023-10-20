@@ -5,7 +5,6 @@ export function getLatestStockData(
 ): stockDataStructure {
   const historyArray = Object.entries(history);
   const latestStockData = historyArray[0][1];
-  console.log("Latest", latestStockData);
   return latestStockData;
 }
 

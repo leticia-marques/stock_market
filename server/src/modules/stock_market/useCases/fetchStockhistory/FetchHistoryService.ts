@@ -3,7 +3,7 @@ import { IApiClient } from "@shared/api/IApiClient";
 import { IDateProvider } from "@shared/providers/dateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
 import { History } from "../../models/History";
-import { HistoryEntry, historyDataStructure } from "@modules/stock_market/types/types";
+import { HistoryEntry} from "@modules/stock_market/types/types";
 
 interface IRequest {
     stockName: string;
@@ -20,7 +20,7 @@ export class FetchHistoryService {
        if (compareInDays < 1) {
             throw new AppError("The final date needs to be greater than initial date", 400);
        }
-       const stockHistoryByDate: historyDataStructure = await this.clientApi.fetchStockHistory(fetchHistory);
+       const stockHistoryByDate = await this.clientApi.fetchStockHistory(fetchHistory);
        if (!stockHistoryByDate) {
           throw new AppError("Stock not found", 404);
        }
