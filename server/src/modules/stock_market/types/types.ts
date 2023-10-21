@@ -24,3 +24,4 @@ export interface IHistoryDataStructure  {
     '4. close': string;
     '5. volume': string;
   }
+

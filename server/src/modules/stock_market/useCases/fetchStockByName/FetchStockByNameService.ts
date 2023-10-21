@@ -10,7 +10,7 @@ export class FetchStockByNameService {
     async execute(stockName: string): Promise<Quote> {
         const quote = await this.clientApi.fetchStockByName(stockName);
         if (!quote) {
-            throw new AppError("Stock name not found", 404)
+            throw new AppError("Stock name not found", 404);
         }
         return quote;
     }

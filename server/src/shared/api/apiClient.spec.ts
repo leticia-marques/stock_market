@@ -5,8 +5,6 @@ import { GLOBAL_MARKET } from "../../__mocks__/globalMock";
 import {HISTORY_MOCK} from "../../__mocks__/historyMock";
 import { IApiClient } from "./IApiClient";
 import { Quote } from "@modules/stock_market/models/Quote";
-import { object } from "joi";
-import { historyDataStructure } from "@modules/stock_market/types/types";
 
 jest.mock("axios");
 
