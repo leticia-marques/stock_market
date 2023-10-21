@@ -1,26 +1,26 @@
-import { historyDataStructure, stockDataStructure } from "../types/types";
+import { IHistoryDataStructure, IStockDataStructure } from "../types/types";
 
 export function getLatestStockData(
-  history: historyDataStructure
-): stockDataStructure {
+  history: IHistoryDataStructure
+): IStockDataStructure {
   const historyArray = Object.entries(history);
   const latestStockData = historyArray[0][1];
   return latestStockData;
 }
 
 export function getStockByDate(
-  history: historyDataStructure,
+  history: IHistoryDataStructure,
   date: string
-): stockDataStructure {
+): IStockDataStructure {
   const stock = history[date];
   return stock;
 }
 
 export function getEntriesByDate(
-  timesSeriesDaily: historyDataStructure,
+  timesSeriesDaily: IHistoryDataStructure,
   to: string,
   from: string
-): historyDataStructure {
+): IHistoryDataStructure {
   const filteredData: { [key: string]: any } = {};
 
   for (const date in timesSeriesDaily) {

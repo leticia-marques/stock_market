@@ -1,4 +1,4 @@
-export interface HistoryEntry  {
+export interface IHistoryEntry  {
   opening: number;
   low: number;
   high: number;
@@ -7,7 +7,7 @@ export interface HistoryEntry  {
   volume: number;
 }
 
-export interface historyDataStructure  {
+export interface IHistoryDataStructure  {
     [date: string]: {
       '1. open': string;
       '2. high': string;
@@ -17,7 +17,7 @@ export interface historyDataStructure  {
     };
   };
 
-  export interface stockDataStructure  {
+  export interface IStockDataStructure  {
     '1. open': string;
     '2. high': string;
     '3. low': string;

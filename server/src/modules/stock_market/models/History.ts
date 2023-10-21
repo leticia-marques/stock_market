@@ -1,13 +1,13 @@
-import { HistoryEntry } from "../types/types";
+import { IHistoryEntry } from "../types/types";
 
 interface ICreateHistory {
     name: string;
-    prices: HistoryEntry[];
+    prices: IHistoryEntry[];
 }
 
 export class History {
     name: string;
-    prices: HistoryEntry[];
+    prices: IHistoryEntry[];
 
     constructor(history: ICreateHistory) {
         this.name = history.name;

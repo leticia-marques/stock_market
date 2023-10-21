@@ -3,9 +3,8 @@ import { IApiClient } from "./IApiClient";
 import { Quote } from "@modules/stock_market/models/Quote";
 import { AppError } from "../errors/AppError";
 import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
-import { historyDataStructure} from "@modules/stock_market/types/types";
+import { IHistoryDataStructure} from "@modules/stock_market/types/types";
 import { getEntriesByDate } from "@modules/stock_market/utils/helperFunctions";
-
 export class AlphaApiClient implements IApiClient {
 
     constructor(private readonly apiKey: string) {
@@ -28,7 +27,7 @@ export class AlphaApiClient implements IApiClient {
         })
     }
 
-    async fetchStockHistory(fetchHistory: IFetchHistoryDto): Promise<historyDataStructure | null> {
+    async fetchStockHistory(fetchHistory: IFetchHistoryDto): Promise<IHistoryDataStructure | null> {
         const {data} = await axios.get(`query?function=TIME_SERIES_DAILY&symbol=${fetchHistory.stockName}&outputsize=full&apikey=${process.env.API_KEY}`);
         const timesSeriesDaily = data["Time Series (Daily)"];
         if (!timesSeriesDaily) {

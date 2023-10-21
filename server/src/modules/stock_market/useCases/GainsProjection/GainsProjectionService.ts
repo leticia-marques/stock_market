@@ -1,7 +1,6 @@
 import { getLatestStockData, getStockByDate} from "@modules/stock_market/utils/helperFunctions";
 import { IApiClient } from "@shared/api/IApiClient";
 import { AppError } from "@shared/errors/AppError";
-import { IDateProvider } from "@shared/providers/dateProvider/IDateProvider";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {

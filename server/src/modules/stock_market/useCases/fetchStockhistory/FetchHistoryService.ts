@@ -3,7 +3,7 @@ import { IApiClient } from "@shared/api/IApiClient";
 import { IDateProvider } from "@shared/providers/dateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
 import { History } from "../../models/History";
-import { HistoryEntry} from "@modules/stock_market/types/types";
+import { IHistoryEntry} from "@modules/stock_market/types/types";
 
 interface IRequest {
     stockName: string;
@@ -24,7 +24,7 @@ export class FetchHistoryService {
        if (!stockHistoryByDate) {
           throw new AppError("Stock not found", 404);
        }
-        const historyEntries: HistoryEntry[] = Object.entries(stockHistoryByDate).map(([date, data]) => {
+        const historyEntries: IHistoryEntry[] = Object.entries(stockHistoryByDate).map(([date, data]) => {
         const { '1. open': opening, '3. low': low, '2. high': high, '4. close': closing, '5. volume': volume } = data;
         return {
           opening: Number(opening),
