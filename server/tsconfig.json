@@ -8,7 +8,8 @@
     "paths": {
       "@modules/*":["modules/*"],
       "@errors/*":["errors/*"],
-      "@shared/*":["shared/*"]  
+      "@shared/*":["shared/*"],
+      "@__mocks__/*": ["__mocks__/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,                             
