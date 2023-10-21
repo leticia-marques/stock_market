@@ -6,6 +6,7 @@ import { fetchStockHistoryValidation } from "@modules/stock_market/validators/fe
 import { GainsProjectionController } from "@modules/stock_market/useCases/GainsProjection/GainsProjectionController";
 import { CompareStocksController } from "@modules/stock_market/useCases/compareStocks/CompareStocksController";
 import { gainsProjectionValidation } from "@modules/stock_market/validators/gainsProjection.schema";
+import { compareStocksValidation } from "@modules/stock_market/validators/compareStocks.schema";
 
 const fetchStockByName = new FetchStockByNameController();
 const fetchHistoryController = new FetchHistoryController();
@@ -16,5 +17,5 @@ const stockRoutes = Router();
 stockRoutes.get("/stock/:stockName/quote", fetchStockByNameValidation,fetchStockByName.handle);
 stockRoutes.get("/stocks/:stockName/history", fetchStockHistoryValidation,fetchHistoryController.handle);
 stockRoutes.get("/stocks/:stockName/gains", gainsProjectionValidation, gainsProjectionController.handle);
-stockRoutes.get("/stocks/:stockName/compare", compareStocksController.handle);
+stockRoutes.get("/stocks/:stockName/compare", compareStocksValidation,compareStocksController.handle);
 export {stockRoutes};
