@@ -1,8 +1,8 @@
 import { AppError } from "@shared/errors/AppError";
 import { AlphaApiClient } from "./apiClient";
 import axios from "axios";
-import { GLOBAL_MARKET } from "../../__mocks__/globalMock";
-import {HISTORY_MOCK} from "../../__mocks__/historyMock";
+import { GLOBAL_MARKET } from "@__mocks__/apiClientGlobalMock";
+import {HISTORY_MOCK} from "@__mocks__/apiClientHistoryMock";
 import { IApiClient } from "./IApiClient";
 import { Quote } from "@modules/stock_market/models/Quote";
 
