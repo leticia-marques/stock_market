@@ -10,13 +10,14 @@ const compareStocksSchema = Joi.object({
     "string.base": "stockName should be a string",
     "string.empty": "stockName can't be an empty field"
   }),
-  stocks: Joi.array().items(Joi.string()
+  stocks: Joi.array()
+  .items(Joi.string())
   .required()
   .messages({
     "any.required": "stocksToCompare is a required field",
-    "string.base": "stocksToCompare should be a array of strings",
+    "string.base": "stocksToCompare should be an array of strings",
     "string.empty": "stocksToCompare can't be an empty field"
-  }))
+  })
 });
 
 export async function compareStocksValidation(

@@ -30,3 +30,15 @@ export function getEntriesByDate(
   }
   return filteredData;
 }
+
+
+export function filterDuplicates(stocks: string[], stockName: string): string[]{
+    let stocksArrayWithoutDuplicates = new Set();
+    return stocks.filter(stock => {
+      if (!stocksArrayWithoutDuplicates.has(stock) && stock !== stockName) {
+          stocksArrayWithoutDuplicates.add(stock);
+          return true;
+      }
+      return false;
+    })
+}
