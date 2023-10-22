@@ -33,7 +33,8 @@ A system to allow small investors to make better decisions about their portfolio
 
 ### Executing program
 
-To run the app you'll need to get an [api key](https://www.alphavantage.co/support/#api-key) and set the API_KEY var on the .env file
+To run the app you'll need to get an [api key](https://www.alphavantage.co/support/#api-key) and set the API_KEY var on the .env file 
+The api has a 5 request per minute and a 100 request per day limit(it blocks your ip after you reach the 100 request max limit)
 
 then run the app
 ```
