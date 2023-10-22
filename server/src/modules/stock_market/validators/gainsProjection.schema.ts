@@ -17,7 +17,7 @@ const gainsProjectionSchema = Joi.object({
     "date.base": "purchasedAt should be a date",
     "date.empty": "purchasedAt can't be an empty field"
   }),
-  purchasedAmount: Joi.string()
+  purchasedAmount: Joi.number()
   .required()
   .messages({
     "any.required": "purchasedAmount is a required field",

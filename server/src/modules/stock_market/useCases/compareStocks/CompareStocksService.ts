@@ -15,6 +15,9 @@ export class CompareStockService {
     async execute(stockName: string, stocks: string[]): Promise<IComparisonResult> {
         const stocksHistory: Quote[] = [];
         const stocksArrayWithoutDuplicates = filterDuplicates(stocks, stockName);
+        if (stocksArrayWithoutDuplicates.length == 0) {
+            throw new AppError("stocks must have different names", 400);
+        }
         const stockToCompareHistory = await this.clientApi.fetchStockByName(stockName);
         if (!stockToCompareHistory) {
             throw new AppError(`${stockName} not found`, 404);
