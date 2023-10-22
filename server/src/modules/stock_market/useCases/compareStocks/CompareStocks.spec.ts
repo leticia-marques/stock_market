@@ -8,6 +8,7 @@ import { container } from "tsyringe";
 import sinon from "sinon";
 import request from "supertest";
 import { app } from "@shared/infra/http/server";
+import * as utils from "@modules/stock_market/utils/helperFunctions";
 
 let mockClientApi: IApiClient;
 let compareStocksService: CompareStockService;
@@ -34,6 +35,14 @@ describe("Tests compareStocks useCase", () => {
             expect(() =>  compareStocksService.execute("Staples", ["ShoeLala", "Michael Scott Paper Company"]))
                 .rejects.toEqual(new AppError("ShoeLala and Michael Scott Paper Company were not found", 404));
         })
+
+        it ("should return an error if none of stocks to be compared are found", async () => {
+         const mockFilterDuplicates = jest.fn().mockReturnValue([])
+
+         jest.spyOn(utils, "filterDuplicates").mockImplementation(mockFilterDuplicates);
+          expect(() =>  compareStocksService.execute("Staples", ["Staples", "Staples"]))
+              .rejects.toEqual(new AppError("stocks must have different names", 400));
+      })
       })
 
       describe("Tests compareStocksController", () => {
