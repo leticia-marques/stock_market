@@ -36,7 +36,7 @@ describe("Tests compareStocks useCase", () => {
                 .rejects.toEqual(new AppError("ShoeLala and Michael Scott Paper Company were not found", 404));
         })
 
-        it ("should return an error if none of stocks to be compared are found", async () => {
+        it ("should return an error if all the stocks have identical names", async () => {
          const mockFilterDuplicates = jest.fn().mockReturnValue([])
 
          jest.spyOn(utils, "filterDuplicates").mockImplementation(mockFilterDuplicates);

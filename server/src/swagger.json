@@ -1,5 +1,5 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "Stock Market",
     "description": "Stock market",
@@ -20,7 +20,8 @@
             "name": "stockName",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "example": "acer"
           }
         ],
         "responses": {
@@ -42,21 +43,24 @@
             "name": "stockName",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "example": "acer"
           },
           {
             "name": "from",
             "in": "query",
             "type": "string",
             "format": "date",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "example": "2022-10-17"
           },
           {
             "name": "to",
             "in": "query",
             "type": "string",
             "format": "date",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "example": "2023-10-17"
           }
         ],
         "responses": {
@@ -65,17 +69,20 @@
           },
           "404": {
             "description": "Bad request",
-           "content": {
+            "content": {
               "application/json": {
                 "examples": {
                   "Stock name not found": {
                     "value": { "message": "Stock name not found" }
                   },
                   "From missing or wrong format": {
-                   " value": { "message": "from must be a valid date" }
+                   "value": { "message": "from must be a valid date" }
                   },
                   "To missing or wrong format": {
-                    " value": { "message": "to must be a valid date" }
+                    "value": { "message": "to must be a valid date" }
+                   },
+                   "Start date is greater than the end date or are both the same":{
+                    "value": {"message": "The final date needs to be greater than initial date"}
                    }                   
                 }
               }
@@ -93,19 +100,22 @@
             "name": "stockName",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "example": "acer"
           },
           {
             "name": "purchasedAt",
             "in": "query",
             "type": "string",
             "format": "date",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "example": "2023-10-17"
           },
           {
             "name": "purchasedAmount",
             "in": "query",
-            "type": "number"
+            "type": "number",
+            "example": 10
           }
         ],
         "responses": {
@@ -121,13 +131,13 @@
                     "value": { "message": "Stock not found" }
                   },
                   "purchasedAt missing or wrong format": {
-                   " value": { "message": "purchasedAt should be a date" }
+                   "value": { "message": "purchasedAt should be a date" }
                   },
                   "purchasedAmount missing": {
-                    " value": { "message": "purchasedAmount can't be an empty field" }
+                    "value": { "message": "purchasedAmount can't be an empty field" }
                    },
                    "purchasedAmount must be a number": {
-                    " value": { "message": "purchasedAmount must be a number" }
+                    "value": { "message": "purchasedAmount must be a number" }
                    }                     
                 }
               }
@@ -139,19 +149,30 @@
     "/stocks/{stockName}/compare": {
       "get": {
         "tags": ["Stocks"],
-        "description": "",
+        "description": "compare stocks",
         "parameters": [
           {
             "name": "stockName",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "example": "acer"
           },
           {
-            "name": "stocksToCompare[]",
+            "name": "stocksToCompare",
             "in": "query",
-            "type": "array",
-            "collectionFormat": "multi"
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "examples": {
+              "stockToCompare": {
+                "summary": "Example of stocksToCompare",
+                "value": ["AAPL", "GOOG", "MSFT"]
+              }
+            }
           }
         ],
         "responses": {
@@ -159,7 +180,7 @@
             "description": "Request successful"
           },
           "404": {
-            "description": "Bad request",
+            "description": "Bad request",            
             "content": {
               "application/json": {
                 "examples": {
@@ -167,10 +188,10 @@
                     "value": { "message": "<stockName> not found" }
                   },
                   "stocksToCompare missing": {
-                   " value": { "message": "stocksToCompare can't be an empty field" }
+                   "value": { "message": "stocksToCompare can't be an empty field" }
                   },
                   "stocks with the same name": {
-                    " value": { "message": "stocks must have different names" }
+                    "value": { "message": "stocks must have different names" }
                    }               
                 }
               }

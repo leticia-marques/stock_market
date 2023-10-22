@@ -35,7 +35,7 @@ export function getEntriesByDate(
 export function filterDuplicates(stocks: string[], stockName: string): string[]{
     let stocksArrayWithoutDuplicates = new Set();
     return stocks.filter(stock => {
-      if (!stocksArrayWithoutDuplicates.has(stock.toLocaleLowerCase) && stock.toLocaleLowerCase !== stockName.toLocaleLowerCase) {
+      if (!stocksArrayWithoutDuplicates.has(stock.toLocaleLowerCase()) && stock.toLocaleLowerCase() !== stockName.toLocaleLowerCase()) {
           stocksArrayWithoutDuplicates.add(stock.toLocaleLowerCase);
           return true;
       }

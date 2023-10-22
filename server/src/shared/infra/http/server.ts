@@ -9,12 +9,13 @@ import cors from "cors";
 import swaggerDoc from "../../../swagger.json";;
 import  swaggerUi from 'swagger-ui-express';
 
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(stockRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use(stockRoutes);
 app.use((err: Error, _request: Request,response:Response, _next: NextFunction) => {
     if (err instanceof AppError)
     {
