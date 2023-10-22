@@ -40,7 +40,7 @@ then run the app
 ```
 npm run dev
 ```
-Rotas:
+Routes:
 
     Get Stock Quote
         Description: Returns the current price of a specified stock.
