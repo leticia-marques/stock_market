@@ -2,7 +2,7 @@ import Joi from "joi";
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "@shared/errors/AppError";
 
-const fetchStockByNameSchema = Joi.object({
+const fetchStockCurrentPriceSchema = Joi.object({
   stockName: Joi.string()
   .required()
   .messages({
@@ -12,14 +12,14 @@ const fetchStockByNameSchema = Joi.object({
   }),
 });
 
-export async function fetchStockByNameValidation(
+export async function fetchStockCurrentPriceValidation(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   const stockName = req.params.stockName;
 
-  const { error } = fetchStockByNameSchema.validate({
+  const { error } = fetchStockCurrentPriceSchema.validate({
    stockName
   });
 

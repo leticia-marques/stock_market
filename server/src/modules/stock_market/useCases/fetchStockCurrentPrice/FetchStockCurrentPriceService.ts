@@ -4,7 +4,7 @@ import { Quote } from "../../models/Quote";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()
-export class FetchStockByNameService {
+export class FetchStockCurrentPriceService {
     constructor(@inject("ClientApi") private clientApi: IApiClient) {}
 
     async execute(stockName: string): Promise<Quote> {
