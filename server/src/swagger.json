@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Stock Market",
+    "description": "Stock market",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/stock/{stockName}/quote": {
+      "get": {
+        "tags": ["Stocks"],
+        "description": "Returns stock's current price",
+        "parameters": [
+          {
+            "name": "stockName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "request successful"
+          },
+          "404":{
+            "description": "Bad request. Stock name not found"
+          }
+        }
+      }
+    },
+    "/stocks/{stockName}/history": {
+      "get": {
+        "tags": ["Stocks"],
+        "description": "Returns stocks's history",
+        "parameters": [
+          {
+            "name": "stockName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful"
+          },
+          "404": {
+            "description": "Bad request",
+           "content": {
+              "application/json": {
+                "examples": {
+                  "Stock name not found": {
+                    "value": { "message": "Stock name not found" }
+                  },
+                  "From missing or wrong format": {
+                   " value": { "message": "from must be a valid date" }
+                  },
+                  "To missing or wrong format": {
+                    " value": { "message": "to must be a valid date" }
+                   }                   
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stocks/{stockName}/gains": {
+      "get": {
+        "tags": ["Stocks"],
+        "description": "Returns gains projection",
+        "parameters": [
+          {
+            "name": "stockName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "purchasedAt",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          {
+            "name": "purchasedAmount",
+            "in": "query",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful"
+          },
+          "404": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Stock name not found": {
+                    "value": { "message": "Stock not found" }
+                  },
+                  "purchasedAt missing or wrong format": {
+                   " value": { "message": "purchasedAt should be a date" }
+                  },
+                  "purchasedAmount missing": {
+                    " value": { "message": "purchasedAmount can't be an empty field" }
+                   },
+                   "purchasedAmount must be a number": {
+                    " value": { "message": "purchasedAmount must be a number" }
+                   }                     
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stocks/{stockName}/compare": {
+      "get": {
+        "tags": ["Stocks"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "stockName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "stocksToCompare[]",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful"
+          },
+          "404": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Stock name not found": {
+                    "value": { "message": "<stockName> not found" }
+                  },
+                  "stocksToCompare missing": {
+                   " value": { "message": "stocksToCompare can't be an empty field" }
+                  },
+                  "stocks with the same name": {
+                    " value": { "message": "stocks must have different names" }
+                   }               
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "test": "jest --detectOpenHandles --forceExit",
-    "dev": "ts-node-dev  -r tsconfig-paths/register --exit-child src/shared/infra/http/app.ts"
+    "dev": "ts-node-dev  -r tsconfig-paths/register --exit-child src/shared/infra/http/app.ts",
+    "swaggerA": "node swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,8 @@
     "supertest": "^6.3.3",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "swagger-ui-express": "^4.1.4"
   },
   "dependencies": {
     "axios": "^1.5.1",
