@@ -39,7 +39,27 @@ then run the app
 ```
 npm run dev
 ```
-To make requests go to http://localhost:3001/api-docs 
+Rotas:
+
+    Get Stock Quote
+        Description: Returns the current price of a specified stock.
+        Path: /stock/{stockName}/quote
+
+    Get Stock History
+        Description: Retrieves historical data for a stock within a specified date range.
+        Path: /stocks/{stockName}/history?from={date}&to={date}
+
+    Get Stock Gains Projection
+        Description: Calculates and returns the projection gains for a stock based on purchase details.
+        Path: /stocks/{stockName}/gains?purchasedAt={date}&purchasedAmount={amount}
+
+    Compare Stocks
+        Description: Compares a stock with other stocks based on name and provides insights.
+        Path: /stocks/{stockName}/compare?stocksToCompare[]={stock}&stocksToCompare[]={stock}
+
+You can try the app at http://localhost:3001/api-docs 
+
+
 
 to run the tests
 ```
