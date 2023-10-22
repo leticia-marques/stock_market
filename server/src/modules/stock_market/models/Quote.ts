@@ -5,9 +5,9 @@ interface ICreateQuote {
 }
 
 export class Quote {
-  private readonly name: string;
-  private readonly lastPrice: number;
-  private readonly pricedAt: string;
+  readonly name: string;
+  readonly lastPrice: number;
+  readonly pricedAt: string;
 
   constructor(quote: ICreateQuote) {
     this.name = quote.name;

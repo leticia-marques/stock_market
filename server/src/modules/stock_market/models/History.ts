@@ -6,8 +6,8 @@ interface ICreateHistory {
 }
 
 export class History {
-    name: string;
-    prices: IHistoryEntry[];
+    readonly name: string;
+    readonly prices: IHistoryEntry[];
 
     constructor(history: ICreateHistory) {
         this.name = history.name;
