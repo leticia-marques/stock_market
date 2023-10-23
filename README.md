@@ -8,7 +8,7 @@ A system to allow small investors to make better decisions about their portfolio
 - Current price
 - Historical price
 - Current price compared to other stocks
-- Gain projection with a purchase on a specific date.
+- Gain projection with purchase on a specific date.
 
 ## Technologies
 
