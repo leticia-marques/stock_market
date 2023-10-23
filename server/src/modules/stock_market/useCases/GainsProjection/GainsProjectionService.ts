@@ -51,7 +51,7 @@ export class GainsProjectionService {
         priceAtDate: Number(stockOnPurchasedDate["4. close"]),
         purchasedAmount: Number(data.purchasedAmount),
         purchasedAt: data.purchasedAt,
-        capitalGains: Number(gains.toFixed(3))
+        capitalGains: Number(gains)
     }
   }
 }
