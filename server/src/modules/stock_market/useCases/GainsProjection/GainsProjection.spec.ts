@@ -1,6 +1,3 @@
-import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
-import { Quote } from "@modules/stock_market/models/Quote";
-import { IHistoryDataStructure } from "@modules/stock_market/types/types";
 import { IApiClient } from "@shared/api/IApiClient";
 import { GainsProjectionService } from "./GainsProjectionService";
 import { AppError } from "@shared/errors/AppError";
@@ -9,6 +6,7 @@ import sinon from "sinon";
 import { container } from "tsyringe";
 import request from "supertest";
 import { app } from "@shared/infra/http/server";
+import { MockApiClient } from "@__mocks__/apiClientMock";
 
 let mockClientApi: IApiClient;
 let gainsProjectionService: GainsProjectionService;
@@ -88,18 +86,6 @@ describe("Tests GainsProjection useCase", () => {
       })
     })
 })
-
-
-class MockApiClient implements IApiClient {
-    fetchStockByName(name: string): Promise<Quote | null> {
-      return null;
-    }
-    fetchStockHistory(
-      fetchHistory: IFetchHistoryDto
-    ): Promise<IHistoryDataStructure | null> {
-      return null;
-    }
-  }
 
   const STOCK_GAINS = {
     "name": "Saticoy Steel",

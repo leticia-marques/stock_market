@@ -1,7 +1,4 @@
 import { IApiClient } from "@shared/api/IApiClient";
-import { IFetchHistoryDto } from "@modules/stock_market/dtos/IFetchHistoryDto";
-import { IHistoryDataStructure } from "@modules/stock_market/types/types";
-import { Quote } from "@modules/stock_market/models/Quote";
 import { AppError } from "@shared/errors/AppError";
 import { FetchHistoryService } from "./FetchHistoryService";
 import { FetchHistoryController } from "./FetchHistoryController";;
@@ -13,6 +10,7 @@ import sinon from "sinon";
 import request from "supertest";
 import { app } from "@shared/infra/http/server";
 import {HISTORY} from "@__mocks__/fetchHistoryServiceReturnMock";
+import { MockApiClient } from "@__mocks__/apiClientMock";
 
 let mockClientApi: IApiClient;
 let fetchHistoryService: FetchHistoryService;
@@ -82,17 +80,3 @@ describe("Tests FetchHistory useCase", () => {
       })
     
 })
-
-
-class MockApiClient implements IApiClient {
-    fetchStockByName(name: string): Promise<Quote | null> {
-      return null;
-    }
-    fetchStockHistory(
-      fetchHistory: IFetchHistoryDto
-    ): Promise<IHistoryDataStructure | null> {
-      return null;
-    }
-  }
-
-  
